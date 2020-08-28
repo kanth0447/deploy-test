@@ -1,17 +1,16 @@
-def branch_name = env.BRANCH_NAME.toString().split("/")[1]
 pipeline {
     agent any
 
     stages {      
         stage ('Compile Stage') {
             when {
-                expression { GIT_BRANCH ==~ /(master)/ }
+                branch 'master'
             } 
             steps {
                 sh '''
                       echo "Hello master branch"
-                      echo env.branch_name
-                      echo ${branch_name}
+                      echo ${GIT_BRANCH}
+                      bash deploy.sh
                    '''    
             }
         }
@@ -24,8 +23,8 @@ pipeline {
             steps {
                 sh '''
                       echo "Hello develop branch"
-                      echo env.branch_name
-                      echo ${branch_name}
+                      echo ${GIT_BRANCH}
+                      bash deploy.sh
                    '''    
             }
         }
