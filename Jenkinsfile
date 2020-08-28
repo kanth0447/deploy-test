@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh '''
                       echo "Hello master branch"
-                      echo env.branch
+                      echo env.GIT_BRANCH
                    '''    
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sh '''
                       echo "Hello develop branch"
-                      echo env.branch
+                      echo env.GIT_BRANCH
                    '''    
             }
         }
