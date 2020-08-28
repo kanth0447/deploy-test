@@ -1,3 +1,4 @@
+def branch_name = env.BRANCH_NAME.toString().split("/")[1]
 pipeline {
     agent any
 
@@ -9,7 +10,8 @@ pipeline {
             steps {
                 sh '''
                       echo "Hello master branch"
-                      echo GIT_BRANCH
+                      echo env.branch_name
+                      echo ${branch_name}
                    '''    
             }
         }
@@ -22,7 +24,8 @@ pipeline {
             steps {
                 sh '''
                       echo "Hello develop branch"
-                      echo GIT_BRANCH
+                      echo env.branch_name
+                      echo ${branch_name}
                    '''    
             }
         }
