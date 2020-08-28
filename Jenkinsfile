@@ -4,12 +4,13 @@ pipeline {
     stages {      
         stage ('Compile Stage') {
             when {
-                expression { GIT_BRANCH ==~ /(master)/ }
+                branch 'master'
             } 
             steps {
                 sh '''
                       echo "Hello master branch"
                       echo ${GIT_BRANCH}
+                      bash deploy.sh
                    '''    
             }
         }
@@ -23,6 +24,7 @@ pipeline {
                 sh '''
                       echo "Hello develop branch"
                       echo ${GIT_BRANCH}
+                      bash deploy.sh
                    '''    
             }
         }
