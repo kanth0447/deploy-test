@@ -4,12 +4,12 @@ pipeline {
     stages {      
         stage ('Compile Stage') {
             when {
-                branch 'master'
-            }
+                expression { GIT_BRANCH ==~ /(master)/ }
+            } 
             steps {
                 sh '''
                       echo "Hello master branch"
-                      echo env.GIT_BRANCH
+                      echo GIT_BRANCH
                    '''    
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sh '''
                       echo "Hello develop branch"
-                      echo env.GIT_BRANCH
+                      echo GIT_BRANCH
                    '''    
             }
         }
