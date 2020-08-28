@@ -1,4 +1,4 @@
-def branch_name = env.BRANCH_NAME.toString().split("/")[1]
+def branch_name = env.BRANCH_NAME.toString().split("/")[1];
 pipeline {
     agent any
 
